@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       # resources :tasks, only: [:index, :show, :create, :update]
+      resources :tasks, only: [:index, :create]
     end
   end
 end
