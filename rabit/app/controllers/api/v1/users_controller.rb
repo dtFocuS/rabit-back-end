@@ -3,18 +3,18 @@ class Api::V1::UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users
+        render json: UserSerializer.new(users).to_serialized_json
     end
 
     def profile
-        render json: { user: UserSerializer.new(current_user) }, status: :accepted
+        render json: { user: UserSerializer.new(current_user).to_serialized_json }, status: :accepted
     end
 
     def create
         @user = User.create(user_params)
         #byebug
         if @user.valid?
-            render json: { user: UserSerializer.new(@user) }, status: :created
+            render json: { user: UserSerializer.new(@user).to_serialized_json }, status: :created
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end
