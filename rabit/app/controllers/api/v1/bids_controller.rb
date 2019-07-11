@@ -6,7 +6,7 @@ class Api::V1::BidsController < ApplicationController
     end
 
     def create
-        @bid = bid.new(bid_params)
+        @bid = Bid.new(bid_params)
         #byebug
         if @bid.save
             #byebug
