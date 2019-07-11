@@ -1,5 +1,5 @@
 class TaskSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :address, :city, :state, :zip_code, :prefer_cost, :completed_by, :user_id
+  attributes :id, :name, :description, :address, :city, :state, :zip_code, :prefer_cost, :completed_by, :user_id, :bids
 
   def initialize(task_object)
     @task = task_object
