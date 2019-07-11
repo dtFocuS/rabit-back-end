@@ -1,5 +1,5 @@
 class Api::V1::TasksController < ApplicationController
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:create, :index, :update]
     def index
         tasks = Task.all
         #byebug
@@ -21,6 +21,15 @@ class Api::V1::TasksController < ApplicationController
     def show
         task = Task.find_by(id: params[:id])
         render json: TaskSerializer.new(task).to_serialized_json
+    end
+
+    def update
+        task = Task.find_by(id: params[:id])
+        if task.update(task_params)
+            render json: TaskSerializer.new(task).to_serialized_json
+        else
+        #
+        end
     end
 
     private
