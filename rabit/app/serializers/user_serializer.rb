@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :username, :star_rating, :address, :city, :state, :zip_code, :img_src, :tasks
+  attributes :id, :name, :username, :star_rating, :address, :city, :state, :zip_code, :img_src, :tasks, :bids
 
   # def initialize(user_object)
   #   @user = user_object
