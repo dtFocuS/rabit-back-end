@@ -1,5 +1,5 @@
 class Api::V1::TasksController < ApplicationController
-    skip_before_action :authorized, only: [:create, :index, :update]
+    skip_before_action :authorized, only: [:create, :index, :update, :show, :destroy]
     def index
         tasks = Task.all
         #byebug
@@ -35,7 +35,7 @@ class Api::V1::TasksController < ApplicationController
     def destroy
         task = Task.find_by(id: params[:id])
         #byebug
-        if Task.destroy
+        if task.destroy
             render json: TaskSerializer.new(task).to_serialized_json
         else
             #byebug

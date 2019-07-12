@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # User.destory_all;
-Task.destroy_all;
+#Task.destroy_all;
+Bid.destroy_all;
