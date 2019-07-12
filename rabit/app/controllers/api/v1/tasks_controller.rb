@@ -32,6 +32,17 @@ class Api::V1::TasksController < ApplicationController
         end
     end
 
+    def destroy
+        task = Task.find_by(id: params[:id])
+        #byebug
+        if Task.destroy
+            render json: TaskSerializer.new(task).to_serialized_json
+        else
+            #byebug
+            puts error.full_message
+        end
+    end
+
     private
     def task_params
         params.require(:task).permit(:name, :description, :address, :city, :state, :prefer_cost, :zip_code, :completed_by, :user_id)
