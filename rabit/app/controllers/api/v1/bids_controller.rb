@@ -25,9 +25,20 @@ class Api::V1::BidsController < ApplicationController
     def update
         bid = Bid.find_by(id: params[:id])
         if bid.update(bid_params)
-            render json: BidSerializer.new(bid).to_serialized_json
+            render json: BidSerializer.new(bid)
         else
-        #
+            puts error.full_message
+        end
+    end
+
+    def destroy
+        bid = Bid.find_by(id: params[:id])
+        #byebug
+        if bid.destroy
+            render json: BidSerializer.new(bid)
+        else
+            #byebug
+            puts error.full_message
         end
     end
 
